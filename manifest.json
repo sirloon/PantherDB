@@ -1,2 +1,11 @@
-# This describes the parser and the data.
-# To be done in a later stage. 
+{
+    "version": "0.1",
+    "dumper" : {
+        "data_url" : "ftp://ftp.pantherdb.org/ortholog/current_release/RefGenomeOrthologs.tar.gz",
+        "uncompress" : true
+    },
+    "uploader" : {
+        "parser" : "parser:load_data",
+        "ignore_duplicates" : false
+    }
+}
