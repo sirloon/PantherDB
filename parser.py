@@ -3,7 +3,7 @@ import os.path
 
 def load_data (data_folder):
          
-         data_file = os.path.join(data_folder, "testfile_PantherDB.txt") 
+         data_file = os.path.join(data_folder, "RefGenomeOrthologs") 
          
          # this empty dictionary is for storing the final output 
          d = {}
@@ -34,7 +34,7 @@ def load_data (data_folder):
         
                  if e is None: # for the first item
                     e = ref_gene_uniprot_id
-                    d = { "id": ref_gene_uniprot_id,
+                    d = { "_id": ref_gene_uniprot_id,
                            "pantherdb": {
                            ref_gene_db_name: ref_gene_db_id,
                            "uniprot_kb": ref_gene_uniprot_id,
@@ -77,7 +77,7 @@ def load_data (data_folder):
              # at the last item, the ortholog is created but since it has no next ref_gene_uniprot_id to compare,
              # it does not go to the second if and output the result
              # and thus we need to let it output the result by giving it the condition if o == true. 
-                d = { "id": ref_gene_uniprot_id,
+                d = { "_id": ref_gene_uniprot_id,
                             "pantherdb": {
                             ref_gene_db_name: ref_gene_db_id,
                             "uniprot_kb": ref_gene_uniprot_id,
