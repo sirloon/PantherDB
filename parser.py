@@ -3,7 +3,7 @@ import os.path
 
 def load_data (data_folder):
          
-         data_file = os.path.join(data_folder, "RefGenomeOrthologs") 
+         data_file = os.path.join(data_folder, "testfile_PantherDB.txt") 
          
          # this empty dictionary is for storing the final output 
          d = {}
@@ -42,7 +42,7 @@ def load_data (data_folder):
                         }
            
                  if ref_gene_uniprot_id != e: # if read up to a different ref. gene 
-                      d = { "id": ref_gene_uniprot_id,
+                      d = { "_id": ref_gene_uniprot_id,
                             "pantherdb": {
                             ref_gene_db_name: ref_gene_db_id,
                             "uniprot_kb": ref_gene_uniprot_id,
@@ -50,9 +50,8 @@ def load_data (data_folder):
                             }
                           }
                       yield d  
-                      d.clear()
                       e = ref_gene_uniprot_id
-                      d = { "id": ref_gene_uniprot_id,
+                      d = { "_id": ref_gene_uniprot_id,
                             "pantherdb": {
                             ref_gene_db_name: ref_gene_db_id,
                             "uniprot_kb": ref_gene_uniprot_id
@@ -85,7 +84,6 @@ def load_data (data_folder):
                             }
                           }
                 yield d       
-      
+       
 if "__name__" == "__main__":
-	for i in load_data(data_folder):
-            print(i)
+    g = load_data(data_folder)
