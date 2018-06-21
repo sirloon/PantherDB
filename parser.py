@@ -3,7 +3,7 @@ import os.path
 
 def load_data (data_folder):
          
-         data_file = os.path.join(data_folder, "testfile_PantherDB.txt") 
+         data_file = os.path.join(data_folder, "RefGenomeOrthologs") 
          
          # this empty dictionary is for storing the final output 
          d = {}
