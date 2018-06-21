@@ -42,14 +42,8 @@ def load_data (data_folder):
                         }
            
                  if ref_gene_uniprot_id != e: # if read up to a different ref. gene 
-                      d = { "_id": ref_gene_uniprot_id,
-                            "pantherdb": {
-                            ref_gene_db_name: ref_gene_db_id,
-                            "uniprot_kb": ref_gene_uniprot_id,
-                            "orthologs" : o
-                            }
-                          }
-                      yield d  
+                      d ["pantherdb"] ["ortholog"] = o
+                      yield (d)  
                       e = ref_gene_uniprot_id
                       d = { "_id": ref_gene_uniprot_id,
                             "pantherdb": {
@@ -71,19 +65,14 @@ def load_data (data_folder):
                             "panther_family": ortholog_family
                             }
                      o.append(new)
-              
+
              if o:
              # at the last item, the ortholog is created but since it has no next ref_gene_uniprot_id to compare,
              # it does not go to the second if and output the result
-             # and thus we need to let it output the result by giving it the condition if o == true. 
-                d = { "_id": ref_gene_uniprot_id,
-                            "pantherdb": {
-                            ref_gene_db_name: ref_gene_db_id,
-                            "uniprot_kb": ref_gene_uniprot_id,
-                            "orthologs" : o
-                            }
-                          }
+             # and thus we need to let it output the result by giving it the condition if o == true.
+                d ["pantherdb"] ["ortholog"] = o
                 yield d       
+                    
        
 if "__name__" == "__main__":
     g = load_data(data_folder)
